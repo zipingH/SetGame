@@ -4,7 +4,7 @@ import Card from './scripts/card.js';
 var deck = [];
 // var card = new Card(1, 2, 3, 4);
 // console.log(card);
-var 3setOfCards = {};
+var setOfCards = {};
 
 //HTML DOM
 var fileInput = document.getElementById("fileInput");
