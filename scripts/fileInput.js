@@ -1,4 +1,3 @@
-var file(){
   //input file
   var fileInput = document.getElementById("fileInput");
   var fileOutput = document.getElementById("fileOutput");
@@ -24,7 +23,3 @@ var file(){
     }
     reader.readAsText(file);
   };
-}
-export {file};
-
-
