@@ -1,0 +1,19 @@
+h1{
+  text-align:center;
+}
+h2{
+  text-align:center;
+}
+label{
+  display: block;
+}
+input, label{
+   margin: 15px 0 15px 0;
+}
+
+#fileOutput{
+  width: 600px;
+  height: 800px;
+  display: block;
+  margin: auto;
+}

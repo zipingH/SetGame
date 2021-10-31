@@ -1,0 +1,20 @@
+{
+  "name": "setgame",
+  "version": "1.0.0",
+  "description": "Web application that reads input file and choose 3 cards that makes a set.",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipingH/SetGame.git"
+  },
+  "author": "Ziping Huang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zipingH/SetGame/issues"
+  },
+  "homepage": "https://github.com/zipingH/SetGame#readme"
+}
