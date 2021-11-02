@@ -2,8 +2,10 @@ import Card from './scripts/card.js';
 
 var deck = [];
 // var setDeck = [];
-var setDeck = {};
-var disjoint_set= {};
+var setOfCards = {};
+
+// var disjoint_deck = new Set();
+// var disjoint_set = {};
 
 
 var setOutput = "";
@@ -12,39 +14,6 @@ var output_message = "";
 //HTML DOM
 var fileInput = document.getElementById("fileInput");
 var fileOutput = document.getElementById("fileOutput");
-
-
-//functions to comapare and sort card with their properties
-function compareNumber(a, b) {
-  if ( a.number < b.number){
-    return -1;
-  }
-  if ( a.number > b.number){
-    return 1;
-  }
-  return 0;
-}
-
-function compareShading(a, b) {
-  if ( a.shading < b.shading){
-    return -1;
-  }
-  if ( a.shading > b.shading){
-    return 1;
-  }
-  return 0;
-}
-
-function compareColor(a, b) {
-  if ( a.color < b.color){
-    return -1;
-  }
-  if ( a.color > b.color){
-    return 1;
-  }
-  return 0;
-}
-
 
 //file input function
 fileInput.onchange = function(){
@@ -78,27 +47,30 @@ fileInput.onchange = function(){
     console.log(deck);
     console.log('\n');
      
-    setDeck = is_setDeck(deck);
-    let setDeck_length = Object.keys(setDeck).length;
-    // let setDeck_length = setDeck.length;
-    console.log("Set of Cards(setDeck): \n");
-    console.log(setDeck);
-    console.log("\n");
+    setOfCards = is_SetOfCards(deck);
+    let setOfCards_length = Object.keys(setOfCards).length;
+    // let setOfCards_length = setOfCards.length;
+
+    // console.log("Set of Cards(setOfCards): \n");
+    // console.log(setOfCards);
+    // console.log("\n");
     
 
     //iterate through setDeck and outputs a set of 3 cards.
-    for(let [key, card] of Object.entries(setDeck)){
+    for(let [key, card] of Object.entries(setOfCards)){
       for(let i = 0; i < card.length; i++){
         setOutput += card[i].toStringCard();
       }
       setOutput += "\n";
     }
+   
 
-
-    // is_disjoint_set(setDeck);
+    // console.log(is_disjoint_set(disjoint_deck));
+    // disjoint_set = is_disjoint_set(disjoint_deck);
+    // console.log(disjoint_set);
 
     //output
-    let num_of_possible = "Number of possible SETs of three cards: " + setDeck_length + "\n\n";
+    let num_of_possible = "Number of possible SETs of three cards: " + setOfCards_length + "\n\n";
     output_message += num_of_possible + setOutput;
     // var jsonString = JSON.stringify(deck);
     // console.log(deck);
@@ -133,7 +105,6 @@ function createCard(lineText){
     color = 2;
   }
 
-
   //letter of symbol
   // A = 0, S = 1 , H = 2
   if(symbol === "@" || symbol === "a" || symbol === "A"){
@@ -148,7 +119,6 @@ function createCard(lineText){
   else{
     console.log("Incorrect symbol letter");
   }
-
 
   //shading
   // lower-case = 0, upper-case = 1, symbol-case = 2
@@ -177,23 +147,24 @@ function createCard(lineText){
   return card;
 }
 
-function is_setDeck(deck){
+
+function is_SetOfCards(deck){
   let key = 0;
-  let setDeck = {};
-  // let setDeck = [];
+  let setOfCards = {};
+  // let setOfCards = [];
   for(let i = 0; i < deck.length; i++){
     for(let j = i + 1; j < deck.length; j++){
       for(let k = j + 1; k < deck.length; k++){
         let setArray = is_Set(deck[i], deck[j], deck[k]);
         if(setArray.length > 0){
-          setDeck[key] = setArray;
+          setOfCards[key] = setArray;
           key++;
-          // setDeck.push(setArray);
+          // setOfCards.push(setArray);
         }
       }
     }
   }
-  return setDeck;
+  return setOfCards;
 }
     
 
@@ -235,7 +206,6 @@ function isValidSet(card1, card2, card3){
 
   var diffSymbol = areAllDifferent(card1.letter, card2.letter, card3.letter);
 
-
   //rules of set game
   if(!(sameColor || diffColor)){
     valid = false;
@@ -252,24 +222,37 @@ function isValidSet(card1, card2, card3){
   return valid;
 }
 
-// function is_disjoint(x, y){
-//   if(x != y){
-//     return true;
-//   }
-// }
+//functions to comapare and sort card with their properties
+function compareNumber(a, b) {
+  if ( a.number < b.number){
+    return -1;
+  }
+  if ( a.number > b.number){
+    return 1;
+  }
+  return 0;
+}
 
+function compareShading(a, b) {
+  if ( a.shading < b.shading){
+    return -1;
+  }
+  if ( a.shading > b.shading){
+    return 1;
+  }
+  return 0;
+}
 
-// function is_disjoint_set(setDeck){
-//   let disjoint_set = [];
-//   // for(let i = 0; i < setDeck.length; i++){
-//   //   for(let j = i+1; j < setDeck.length; j++){
-//   //     if(is_disjoint(setDeck[i], setDeck[j])){
-//   //       disjoint_set.push(setDeck[i], setDeck[j]);
-//   //     }
-//   //   }
-//   // }
-//   console.log(disjoint_set);
-// }
+function compareColor(a, b) {
+  if ( a.color < b.color){
+    return -1;
+  }
+  if ( a.color > b.color){
+    return 1;
+  }
+  return 0;
+}
+
 
 
 
