@@ -12,8 +12,12 @@ input, label{
 }
 
 #fileOutput{
-  width: 600px;
-  height: 800px;
+  width: 400px;
+  height: 600px;
   display: block;
   margin: auto;
+}
+#reset{
+  display: block;
+  margin: 25px auto;
 }
